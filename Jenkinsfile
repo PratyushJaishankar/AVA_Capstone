@@ -43,41 +43,17 @@ pipeline {
         stage('Detect changed test files') {
             steps {
                 script {
-                    if (isUnix()) {
-                        env.TEST_FILES = sh(
-                            script: '''
-                            git diff --name-status HEAD~1 HEAD || git diff --name-status HEAD
-                            ''',
-                            returnStdout: true
-                        )
-                        env.TEST_FILES = sh(
-                            script: '''
-                            git diff --name-status HEAD~1 HEAD || git diff --name-status HEAD \
-                            | awk '$1=="A" || $1=="M" {print $2}' \
-                            | grep '^tests/.*\\.py$' \
-                            | grep -v '__init__\\.py' \
-                            | grep -v 'utils\\.py' \
-                            | grep -v 'conftest\\.py' || true
-                            ''',
-                            returnStdout: true
-                        ).trim()
-                    } else {
-                        env.TEST_FILES = bat(
-                            script: '''
-                            git diff --name-status HEAD~1 HEAD || git diff --name-status HEAD
-                            ''',
-                            returnStdout: true
-                        )
-                        env.TEST_FILES = bat(
-                            script: '''
-                            for /f "tokens=1,2" %%A in ('git diff --name-status HEAD~1 HEAD ^|^| git diff --name-status HEAD') do (
-                              if "%%A"=="A" echo %%B
-                              if "%%A"=="M" echo %%B
-                            ) | findstr /R "^tests\\\\.*\\.py" | findstr /V "__init__ utils conftest"
-                            ''',
-                            returnStdout: true
-                        ).trim()
-                    }
+                    env.TEST_FILES = bat(
+                        script: '''
+                        git diff --name-status HEAD~1 HEAD > changes.txt 2>nul || git diff --name-status HEAD > changes.txt
+
+                        for /f "usebackq tokens=1,* delims= " %%A in ("changes.txt") do (
+                            if "%%A"=="A" echo %%B
+                            if "%%A"=="M" echo %%B
+                        ) | findstr /R "^tests\\.*\\.py" | findstr /V "__init__ utils conftest"
+                        ''',
+                        returnStdout: true
+                    ).trim()
 
                     if (!env.TEST_FILES) {
                         echo "No new or modified test files detected. Skipping pytest."
