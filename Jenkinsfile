@@ -47,16 +47,24 @@ pipeline {
         stage('Detect changed test files') {
             steps {
                 script {
+                    // Windows-safe detection with guaranteed exit code 0
                     env.TEST_FILES = bat(
                         script: '''
                         @echo off
+                        setlocal EnableDelayedExpansion
+
                         REM Get changed files (safe for first build)
                         git diff --name-status HEAD~1 HEAD > changes.txt 2>nul || git diff --name-status HEAD > changes.txt
 
+                        set FOUND=
+
                         for /f "usebackq tokens=1,* delims= " %%A in ("changes.txt") do (
-                            if "%%A"=="A" echo %%B
-                            if "%%A"=="M" echo %%B
+                            if "%%A"=="A" set FOUND=1& echo %%B
+                            if "%%A"=="M" set FOUND=1& echo %%B
                         ) | findstr /R "^tests\\.*\\.py" | findstr /V "__init__ utils conftest"
+
+                        REM Always exit 0 so Jenkins does not fail
+                        exit /b 0
                         ''',
                         returnStdout: true
                     ).trim()
@@ -90,9 +98,7 @@ pipeline {
                             if exist %ALLURE_RESULTS% rmdir /s /q %ALLURE_RESULTS%
                             mkdir %ALLURE_RESULTS%
 
-                            REM Quote each test file safely
-                            set TESTS=%TEST_FILES%
-                            pytest -v %TESTS% --alluredir=%ALLURE_RESULTS%
+                            pytest -v %TEST_FILES% --alluredir=%ALLURE_RESULTS%
                             """
                         }
                     }
