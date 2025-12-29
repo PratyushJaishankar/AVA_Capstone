@@ -31,6 +31,7 @@ pipeline {
                         '''
                     } else {
                         bat '''
+                        @echo off
                         python -m pip install --upgrade pip
                         if exist requirements.txt (
                             pip install -r requirements.txt
@@ -48,15 +49,14 @@ pipeline {
                 script {
                     env.TEST_FILES = bat(
                         script: '''
+                        @echo off
                         REM Get changed files (safe for first build)
                         git diff --name-status HEAD~1 HEAD > changes.txt 2>nul || git diff --name-status HEAD > changes.txt
 
-                        (
-                            for /f "usebackq tokens=1,* delims= " %%A in ("changes.txt") do (
-                                if "%%A"=="A" echo %%B
-                                if "%%A"=="M" echo %%B
-                            )
-                        ) | findstr /R "^tests\\.*\\.py" | findstr /V "__init__ utils conftest" || exit /b 0
+                        for /f "usebackq tokens=1,* delims= " %%A in ("changes.txt") do (
+                            if "%%A"=="A" echo %%B
+                            if "%%A"=="M" echo %%B
+                        ) | findstr /R "^tests\\.*\\.py" | findstr /V "__init__ utils conftest"
                         ''',
                         returnStdout: true
                     ).trim()
@@ -86,9 +86,13 @@ pipeline {
                             """
                         } else {
                             bat """
+                            @echo off
                             if exist %ALLURE_RESULTS% rmdir /s /q %ALLURE_RESULTS%
                             mkdir %ALLURE_RESULTS%
-                            pytest -v %TEST_FILES% --alluredir=%ALLURE_RESULTS%
+
+                            REM Quote each test file safely
+                            set TESTS=%TEST_FILES%
+                            pytest -v %TESTS% --alluredir=%ALLURE_RESULTS%
                             """
                         }
                     }
