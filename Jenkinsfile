@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    options { timestamps() }
+
+    options {
+        timestamps()
+    }
 
     environment {
         ALLURE_RESULTS = 'allure-results'
@@ -21,18 +24,18 @@ pipeline {
                         sh '''
                         python3 -m pip install --upgrade pip
                         if [ -f requirements.txt ]; then
-                          pip3 install -r requirements.txt
+                            pip3 install -r requirements.txt
                         else
-                          pip3 install pytest allure-pytest
+                            pip3 install pytest allure-pytest
                         fi
                         '''
                     } else {
                         bat '''
                         python -m pip install --upgrade pip
                         if exist requirements.txt (
-                          pip install -r requirements.txt
+                            pip install -r requirements.txt
                         ) else (
-                          pip install pytest allure-pytest
+                            pip install pytest allure-pytest
                         )
                         '''
                     }
@@ -45,12 +48,15 @@ pipeline {
                 script {
                     env.TEST_FILES = bat(
                         script: '''
+                        REM Get changed files (safe for first build)
                         git diff --name-status HEAD~1 HEAD > changes.txt 2>nul || git diff --name-status HEAD > changes.txt
 
-                        for /f "usebackq tokens=1,* delims= " %%A in ("changes.txt") do (
-                            if "%%A"=="A" echo %%B
-                            if "%%A"=="M" echo %%B
-                        ) | findstr /R "^tests\\.*\\.py" | findstr /V "__init__ utils conftest"
+                        (
+                            for /f "usebackq tokens=1,* delims= " %%A in ("changes.txt") do (
+                                if "%%A"=="A" echo %%B
+                                if "%%A"=="M" echo %%B
+                            )
+                        ) | findstr /R "^tests\\.*\\.py" | findstr /V "__init__ utils conftest" || exit /b 0
                         ''',
                         returnStdout: true
                     ).trim()
