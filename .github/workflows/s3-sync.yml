@@ -8,11 +8,16 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-
+    
+    permissions:
+      contents: write  # Required to push changes
+    
     steps:
 
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -32,7 +37,9 @@ jobs:
           git config user.email "bot@automation.local"
 
           git add .
-          git diff --cached --quiet || git commit -m "Auto sync from S3"
+          git diff --cached --quiet || git commit -m "Auto sync from S3 [skip ci]"
 
       - name: Push changes
         run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
