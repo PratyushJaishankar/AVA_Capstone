@@ -48,7 +48,7 @@ jobs:
       - name: Sync files from S3
         run: |
           echo "Starting S3 sync..."
-          aws s3 sync s3://github-aava-push-bucket ./synced --delete
+          aws s3 sync s3://github-aava-push-bucket ./tests/s3_fetch --delete
           echo "S3 sync completed"
 
       - name: Check for changes
@@ -72,4 +72,3 @@ jobs:
           git commit -m "Auto sync from S3 [skip ci]"
           git pull --rebase origin ${{ github.ref_name }}
           git push
-
