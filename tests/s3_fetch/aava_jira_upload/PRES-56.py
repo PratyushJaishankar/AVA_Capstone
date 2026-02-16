@@ -1,1 +1,68 @@
-aW1wb3J0IHB5dGVzdAppbXBvcnQgdGltZQpmcm9tIHBhZ2Vfb2JqZWN0cy5sb2dpbl9wYWdlIGltcG9ydCBMb2dpblBhZ2UKZnJvbSBkYXRhLkNvbXBsZXRlX1Rlc3RfRGF0YS5kYXRhX2xvYWRlciBpbXBvcnQgZ2V0X2RhdGEKZnJvbSB1dGlscy5icm93c2VyX2NvbmZpZyBpbXBvcnQgZ2V0X2Jyb3dzZXJzCgojIFJldHJpZXZlIGxpc3Qgb2YgYnJvd3NlcnMgZm9yIGNyb3NzLWJyb3dzZXIgdGVzdGluZwpicm93c2VycyA9IGdldF9icm93c2VycygpCgojIExvYWQgbmVnYXRpdmUgbG9naW4gdGVzdCBkYXRhIGZyb20gQ1NWCm5lZ2F0aXZlX2xvZ2luX2RhdGEgPSBnZXRfZGF0YSgiZGF0YS9GYWlsZWRfVGVzdF9EYXRhL25lZ2F0aXZlX2xvZ2luX2RhdGEuY3N2IikKCkBweXRlc3QubWFyay5mZWF0dXJlKCJMb2dpbiAmIExvZ291dCIpCkBweXRlc3QubWFyay5uZWdhdGl2ZWNhc2VzCkBweXRlc3QubWFyay5wYXJhbWV0cml6ZSgiZHJpdmVyIiwgYnJvd3NlcnMsIGluZGlyZWN0PVRydWUpCkBweXRlc3QubWFyay5wYXJhbWV0cml6ZSgibG9naW5fZGF0YSIsIG5lZ2F0aXZlX2xvZ2luX2RhdGEsIGluZGlyZWN0PVRydWUpCmRlZiB0ZXN0X25lZ2F0aXZlX2xvZ2luX3ZhbGlkYXRpb24oZHJpdmVyLCBsb2dpbl9kYXRhKToKICAgICIiIgogICAgTmVnYXRpdmUgbG9naW4gdmFsaWRhdGlvbiB0ZXN0LgogICAgU3RlcHM6CiAgICAxLiBTdGFydCBicm93c2VyIGFuZCBuYXZpZ2F0ZSB0byBodHRwczovL21hcmtldDk5LmNvbS8KICAgIDIuIE9wZW4gdGhlIGxvZ2luIGZvcm0gdXNpbmcgTG9naW5QYWdlLm9wZW5fbG9naW4oKQogICAgMy4gUGVyZm9ybSBtb3VzZSBob3ZlciBvbiB0aGUgc3VibWl0IGJ1dHRvbiBhbmQgYXNzZXJ0IGl0IHJldHVybnMgVHJ1ZQogICAgNC4gU3VibWl0IGxvZ2luIHdpdGggaW52YWxpZCBjcmVkZW50aWFscyBmcm9tIENTVgogICAgNS4gV2FpdCBmb3IgfjJzCiAgICA2LiBBc3NlcnQgdGhhdCBsb2dpbiBmYWlscyBhbmQgbG9naW4gZm9ybSByZW1haW5zIGF2YWlsYWJsZQogICAgIiIiCiAgICAjIFN0ZXAgMTogTmF2aWdhdGUgdG8gdGhlIHRhcmdldCBzaXRlCiAgICBkcml2ZXIuZ2V0KCJodHRwczovL21hcmtldDk5LmNvbS8iKQoKICAgICMgU3RlcCAyOiBJbml0aWFsaXplIExvZ2luUGFnZSBhbmQgb3BlbiBsb2dpbiBmb3JtCiAgICBsb2dpbl9wYWdlID0gTG9naW5QYWdlKGRyaXZlcikKICAgIGxvZ2luX3BhZ2Uub3Blbl9sb2dpbigpCgogICAgIyBTdGVwIDM6IFBlcmZvcm0gbW91c2UgaG92ZXIgb24gdGhlIHN1Ym1pdCBidXR0b24gYW5kIGFzc2VydCBpdCByZXR1cm5zIFRydWUKICAgIG1vdXNlX2hvdmVyX3Jlc3VsdCA9IGxvZ2luX3BhZ2UubW91c2VfaG92ZXJfcGVyZm9ybSgpCiAgICBhc3NlcnQgbW91c2VfaG92ZXJfcmVzdWx0IGlzIFRydWUsICJNb3VzZSBob3ZlciBvbiBzdWJtaXQgYnV0dG9uIGZhaWxlZCIKCiAgICAjIFN0ZXAgNDogQXR0ZW1wdCBsb2dpbiB3aXRoIGludmFsaWQgY3JlZGVudGlhbHMgZnJvbSBDU1YKICAgIGVtYWlsID0gbG9naW5fZGF0YVsiZW1haWwiXQogICAgcGFzc3dvcmQgPSBsb2dpbl9kYXRhWyJwYXNzd29yZCJdCiAgICBsb2dpbl9wYWdlLmxvZ2luKGVtYWlsLCBwYXNzd29yZCkKCiAgICAjIFN0ZXAgNTogV2FpdCBmb3IgfjIgIHNlY29uZHMgdG8gYWxsb3cgVUkgdG8gdXBkYXRlCiAgICB0aW1lLnNsZWVwKDIpCgogICAgIyBTdGVwIDY6IEFzc2VydCB0aGF0IGxvZ2luIGZhaWxzIGFuZCBsb2dpbiBmb3JtIHJlbWFpbnMgYXZhaWxhYmxlCiAgICBhc3NlcnQgbm90IGxvZ2luX3BhZ2UuaXNfbG9nZ2VkX2luKCksICgKICAgICAgICBmIkV4cGVjdGVkIGxvZ2luIHRvIGZhaWwgZm9yIGNyZWRlbnRpYWxzOiB7bG9naW5fZGF0YX0sIGJ1dCB1c2VyIGFwcGVhcnMgbG9nZ2VkIGluICh1cmw9e2RyaXZlci5jdXJyZW50X3VybH0pIgogICAgKQogICAgYXNzZXJ0IGxvZ2luX3BhZ2UuaXNfbG9naW5fcGFnZV9sb2FkZWQoKSwgKAogICAgICAgIGYgIkV4cGVjdGVkIGxvZ2luIHBhZ2UvZm9ybSB0byByZW1haW4gYWZ0ZXIgZmFpbGVkIGxvZ2luIGZvciBjcmVkZW50aWFsczoge2xvZ2luX2RhdGF9IgogICAgKQ==
+import pytest
+import time
+from page_objects.login_page import LoginPage
+import csv
+from selenium import webdriver
+
+def load_negative_login_data(csv_path):
+    """
+    Loads negative login credentials from a CSV file.
+    Returns a list of dictionaries with 'email' and 'password' keys.
+    """
+    data = []
+    with open(csv_path, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            data.append({'email': row['email'], 'password': row['password']})
+    return data
+
+@pytest.fixture(scope="function")
+def driver():
+    """
+    Pytest fixture to initialize and quit the browser driver.
+    """
+    driver = webdriver.Chrome()  # Or use any configured browser
+    driver.implicitly_wait(10)
+    yield driver
+    driver.quit()
+
+# Load negative test data from CSV
+negative_login_data = load_negative_login_data("data/Failed_Test_Data/negative_login_data.csv")
+
+@pytest.mark.parametrize("login_data", negative_login_data)
+def test_negative_login(driver, login_data):
+    """
+    Test Case: Negative Login
+    Steps:
+    1. Start browser and navigate to https://market99.com/
+    2. Open Login form
+    3. Perform mouse hover on submit button and assert effect
+    4. Submit login with invalid credentials
+    5. Wait ~2s
+    6. Assert login failed and login form remains
+    """
+    # Step 1: Navigate to the site
+    driver.get("https://market99.com/")
+    login_page = LoginPage(driver)
+
+    # Step 2: Open the login form
+    login_page.open_login()
+
+    # Step 3: Mouse hover on submit button and assert color change
+    assert login_page.mouse_hover_perform() is True, "Mouse hover did not trigger expected effect on submit button."
+
+    # Step 4: Attempt login with invalid credentials
+    email = login_data["email"]
+    password = login_data["password"]
+    login_page.login(email, password)
+
+    # Step 5: Wait for ~2 seconds to allow for UI response
+    time.sleep(2)
+
+    # Step 6: Assert that login fails and login form remains
+    assert not login_page.is_logged_in(), (
+        f"Expected login to fail for {email}, but user appears logged in (url={driver.current_url})"
+    )
+    assert login_page.is_login_page_loaded(), (
+        f"Expected login page/form to remain after failed login for {email}"
+    )
