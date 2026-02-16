@@ -2,8 +2,8 @@ name: Sync S3 to Repo
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 * * * *"   # runs every hour
+  # schedule:
+  #   - cron: "0 * * * *"   # runs every hour
 
 jobs:
   sync:
